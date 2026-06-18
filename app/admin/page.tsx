@@ -3,119 +3,121 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
+/* ---------------- TYPES ---------------- */
+
+type Order = {
+  id: number;
+  customer_name?: string;
+  status: string;
+};
+
+type InventoryItem = {
+  id: number;
+  product_name: string;
+  quantity: number;
+  price?: number;
+};
+
+/* ---------------- PAGE ---------------- */
+
 export default function Admin() {
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [inventory, setInventory] = useState<InventoryItem[]>([]);
 
-const [orders,setOrders]=useState([]);
-const [inventory,setInventory]=useState([]);
+  useEffect(() => {
+    fetchOrders();
+    fetchInventory();
+  }, []);
 
-useEffect(()=>{
-fetchOrders();
-fetchInventory();
-},[]);
+  /* ---------------- FETCH ORDERS ---------------- */
 
-async function fetchOrders(){
+  async function fetchOrders() {
+    const { data } = await supabase
+      .from("orders")
+      .select("*");
 
-const {data}=await supabase
-.from("orders")
-.select("*");
+    setOrders(data || []);
+  }
 
-setOrders(data || []);
+  /* ---------------- FETCH INVENTORY ---------------- */
 
-}
+  async function fetchInventory() {
+    const { data } = await supabase
+      .from("inventory")
+      .select("*");
 
-async function fetchInventory(){
+    setInventory(data || []);
+  }
 
-const {data}=await supabase
-.from("inventory")
-.select("*");
+  /* ---------------- UPDATE STATUS ---------------- */
 
-setInventory(data || []);
+  async function updateStatus(id: number, status: string) {
+    await supabase
+      .from("orders")
+      .update({ status })
+      .eq("id", id);
 
-}
+    fetchOrders();
+  }
 
-async function updateStatus(id:number,status:string){
+  /* ---------------- UI ---------------- */
 
-await supabase
-.from("orders")
-.update({status})
-.eq("id",id);
+  return (
+    <div className="p-10 max-w-5xl mx-auto">
 
-fetchOrders();
+      <h1 className="text-3xl font-bold text-green-800">
+        Admin Dashboard
+      </h1>
 
-}
+      {/* ORDERS */}
+      <h2 className="mt-8 text-xl font-bold">
+        Orders
+      </h2>
 
-return(
+      <div className="mt-4 space-y-3">
+        {orders.map((order) => (
+          <div
+            key={order.id}
+            className="border rounded-lg p-4 flex justify-between items-center"
+          >
+            <p className="font-medium">
+              {order.customer_name || "Unknown Customer"}
+            </p>
 
-<div className="p-10">
+            <select
+              className="border p-2 rounded"
+              value={order.status}
+              onChange={(e) =>
+                updateStatus(order.id, e.target.value)
+              }
+            >
+              <option value="pending">Pending</option>
+              <option value="processing">Processing</option>
+              <option value="delivered">Delivered</option>
+            </select>
+          </div>
+        ))}
+      </div>
 
-<h1 className="text-2xl font-bold">
-Admin Dashboard
-</h1>
+      {/* INVENTORY */}
+      <h2 className="mt-10 text-xl font-bold">
+        Inventory
+      </h2>
 
-<h2 className="mt-6 font-bold">
-Orders
-</h2>
+      <div className="mt-4 space-y-2">
+        {inventory.map((item) => (
+          <div
+            key={item.id}
+            className="border rounded-lg p-3 flex justify-between"
+          >
+            <span>{item.product_name}</span>
+            <span className="font-bold">
+              {item.quantity}
+            </span>
+          </div>
+        ))}
+      </div>
 
-{orders.map((order:any)=>(
-
-<div
-key={order.id}
-className="border p-4 mb-3"
->
-
-<p>{order.customer_name}</p>
-
-<select
-value={order.status}
-onChange={(e)=>
-updateStatus(
-order.id,
-e.target.value
-)
-}
->
-
-<option value="pending">
-Pending
-</option>
-
-<option value="processing">
-Processing
-</option>
-
-<option value="delivered">
-Delivered
-</option>
-
-</select>
-
-</div>
-
-))}
-
-<h2 className="mt-10 font-bold">
-Inventory
-</h2>
-
-{inventory.map((item:any)=>(
-
-<div
-key={item.id}
-className="border p-3 mb-2"
->
-
-{item.product_name}
-
-{" — "}
-
-{item.quantity}
-
-</div>
-
-))}
-
-</div>
-
-)
-
+    </div>
+  );
 }
