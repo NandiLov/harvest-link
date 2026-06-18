@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌿 Harvest Link Farms
 
-## Getting Started
+**Tech-enabled avocado propagation enterprise based in Zambia**
 
-First, run the development server:
+Harvest Link Farms is a modern agritech startup focused on producing high-quality grafted Hass avocado seedlings, supporting farmers with orchard establishment, grafting services, and agricultural advisory support.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+We combine traditional agriculture with digital tools to improve **market access, productivity, and scalability** for local farmers.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Live Demo
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+👉 https://your-vercel-link.vercel.app
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📌 Project Overview
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Harvest Link Farms is building a scalable avocado value chain through:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 🌱 Production of grafted Hass avocado seedlings
+- 🌳 Orchard establishment support
+- 🔧 Professional grafting services
+- 📊 Farm advisory and technical support
+- 💬 Direct farmer communication via WhatsApp & web
 
-## Deploy on Vercel
+The platform serves as a **tech-enabled agricultural business system**, improving efficiency and farmer access to quality planting materials.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧠 Problem Being Solved
+
+Many farmers in Zambia face:
+
+- Limited access to certified avocado seedlings
+- Low productivity due to poor grafting techniques
+- Lack of technical farming knowledge
+- Inefficient agricultural value chain systems
+
+---
+
+## 💡 Solution
+
+We provide:
+
+- High-quality grafted seedlings from our nursery
+- Skilled grafting services to improve yield
+- Advisory support for orchard management
+- Digital-first customer engagement via web + WhatsApp
+
+---
+
+## 🛠️ Tech Stack
+
+- Next.js (App Router)
+- React
+- Tailwind CSS
+- Vercel (Deployment)
+- Supabase (planned for database & inventory)
+- WhatsApp API (customer communication)
+- Resend (email notifications)
+
+---
+
+## 📊 Key Features
+
+- Modern responsive website
+- Product listing system
+- WhatsApp ordering integration
+- Contact form with email notifications
+- Agricultural service catalog
+- Scalable architecture for future agritech platform
+
+---
+
+## 🌍 Market Impact
+
+Harvest Link Farms contributes to:
+
+- Improved agricultural productivity
+- Increased farmer income
+- Strengthened avocado value chain in Zambia
+- Export-ready agricultural production systems
+
+---
+
+## 👥 Team
+
+- Founder: Agricultural & tech operations
+- Co-founders: Business & field operations
+- Grafting partners: Experienced avocado propagation specialists
+- Community farmers: Early adopters and collaborators
+
+---
+
+## 🤝 Partnerships
+
+- Local avocado growers & cooperatives
+- Grafting service specialists
+- Agricultural extension support networks
+
+---
+
+## 📈 Future Roadmap
+
+- Inventory management system
+- Online ordering & tracking platform
+- Farmer dashboard
+- AI-assisted farm advisory tools
+- Export logistics integration
+
+---
+
+## 📬 Contact
+
+📞 +260 779 769 456  
+💬 WhatsApp: https://wa.me/260779769456  
+📧 harvestlinkfarms@gmail.com  
+
+---
+
+## 📜 License
+
+This project is for commercial agritech development and innovation purposes.
