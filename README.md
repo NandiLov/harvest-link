@@ -115,7 +115,7 @@ Harvest Link Farms contributes to:
 
 📞 +260 779 769 456  
 💬 WhatsApp: https://wa.me/260779769456  
-📧 harvestlinkfarms@gmail.com  
+📧 harvestlinkltd@gmail.com  
 
 ---
 
