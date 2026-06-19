@@ -7,28 +7,26 @@ export async function POST(req: Request) {
 
     if (!name || !email || !message) {
       return NextResponse.json(
-        { error: "All fields required" },
+        { success: false, error: "Missing fields" },
         { status: 400 }
       );
     }
 
-    // Get API key safely
     const apiKey = process.env.RESEND_API_KEY;
 
     if (!apiKey) {
       return NextResponse.json(
-        { error: "RESEND API key missing" },
+        { success: false, error: "Missing RESEND_API_KEY" },
         { status: 500 }
       );
     }
 
-    // Create Resend only after checking key
     const resend = new Resend(apiKey);
 
-    await resend.emails.send({
+    const result = await resend.emails.send({
       from: "Harvest Link Farms <onboarding@resend.dev>",
-      to: ["nandilamul@gmail.com"],
-      subject: `New Contact Form Message from ${name}`,
+      to: "harvestlinkltd@gmail.com",
+      subject: `New message from ${name}`,
       replyTo: email,
       text: `
 Name: ${name}
@@ -39,15 +37,10 @@ ${message}
       `,
     });
 
-    return NextResponse.json({
-      success: true
-    });
-
-  } catch (error) {
-    console.error(error);
-
+    return NextResponse.json({ success: true, result });
+  } catch (error: any) {
     return NextResponse.json(
-      { error: "Email failed to send" },
+      { success: false, error: error.message || "Email failed" },
       { status: 500 }
     );
   }
