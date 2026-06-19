@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
   try {
     const { name, email, message } = await req.json();
@@ -14,9 +12,22 @@ export async function POST(req: Request) {
       );
     }
 
+    // Get API key safely
+    const apiKey = process.env.RESEND_API_KEY;
+
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "RESEND API key missing" },
+        { status: 500 }
+      );
+    }
+
+    // Create Resend only after checking key
+    const resend = new Resend(apiKey);
+
     await resend.emails.send({
       from: "Harvest Link Farms <onboarding@resend.dev>",
-      to: "harvestlinkltd@gmail.com",
+      to: ["harvestlinkltd@gmail.com"],
       subject: `New Contact Form Message from ${name}`,
       replyTo: email,
       text: `
@@ -28,8 +39,13 @@ ${message}
       `,
     });
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({
+      success: true
+    });
+
   } catch (error) {
+    console.error(error);
+
     return NextResponse.json(
       { error: "Email failed to send" },
       { status: 500 }
