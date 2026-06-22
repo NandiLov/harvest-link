@@ -10,7 +10,7 @@ We combine traditional agriculture with digital tools to improve **market access
 
 ## 🚀 Live Demo
 
-👉 https://your-vercel-link.vercel.app
+👉 https://harvest-link-bay.vercel.app/
 
 ---
 
